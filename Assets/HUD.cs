@@ -17,6 +17,9 @@ public class HUD : MonoBehaviour
     public GameObject knife;
     public GameObject knifeObj;
 
+    public GameObject lighter;
+    public GameObject lighterObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,5 +62,6 @@ public class HUD : MonoBehaviour
         {
             knife.SetActive(false);
         }
+       
     }
 }

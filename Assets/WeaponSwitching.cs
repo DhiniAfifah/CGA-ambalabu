@@ -4,47 +4,48 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    public GameObject obj1;
-    public GameObject obj2;
-    public GameObject obj3;
+    public List<GameObject> objects; // List to store weapon objects (exclude "hands")
 
     // Start is called before the first frame update
     void Start()
     {
-        obj1.SetActive(false);
-        obj2.SetActive(false);
-        obj3.SetActive(false);
+        // Ensure all objects are inactive at the start
+        foreach (GameObject obj in objects)
+        {
+            obj.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("1"))
+        // Check for key presses dynamically
+        for (int i = 0; i <= objects.Count; i++)
         {
-            obj1.SetActive(false);
-            obj2.SetActive(false);
-            obj3.SetActive(false);
+            if (Input.GetButtonDown((i + 1).ToString()))
+            {
+                SwitchObject(i);
+            }
         }
+    }
 
-        if (Input.GetButtonDown("2"))
+    void SwitchObject(int index)
+    {
+        // If index is 0, represent "hands" (no weapon)
+        if (index == 0)
         {
-            obj1.SetActive(true);
-            obj2.SetActive(false);
-            obj3.SetActive(false);
+            foreach (GameObject obj in objects)
+            {
+                obj.SetActive(false); // Deactivate all objects
+            }
         }
-
-        if (Input.GetButtonDown("3"))
+        else
         {
-            obj1.SetActive(false);
-            obj2.SetActive(true);
-            obj3.SetActive(false);
-        }
-
-        if (Input.GetButtonDown("4"))
-        {
-            obj1.SetActive(false);
-            obj2.SetActive(false);
-            obj3.SetActive(true);
+            // Disable all objects, then activate the selected one
+            for (int i = 0; i < objects.Count; i++)
+            {
+                objects[i].SetActive(i == index - 1); // Adjust index (1-based input vs 0-based list)
+            }
         }
     }
 }
