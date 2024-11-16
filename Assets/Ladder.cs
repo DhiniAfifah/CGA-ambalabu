@@ -22,44 +22,59 @@ public class Ladder : MonoBehaviour
     {
         if (col.gameObject.tag == "Ladder")
         {
-            /*Debug.Log("Kena ladder cuk");*/
             player.enabled = false;
-            inside = !inside;
-        }    
+            inside = true;
+        }
     }
 
     void OnTriggerExit(Collider col)
     {
         if (col.gameObject.tag == "Ladder")
         {
-            /*Debug.Log("GA Kena ladder cuk");*/
             player.enabled = true;
-            inside = !inside;
+            inside = false;
+
+            // Stop sound when leaving the ladder
+            if (sound.isPlaying)
+            {
+                sound.Stop();
+            }
         }
     }
-
 
     // Update is called once per frame
     void Update()
     {
-        if (inside == true && Input.GetKey("w"))
+        if (inside && Input.GetKey("w"))
         {
             player.transform.position += Vector3.up / speed * Time.deltaTime;
-        }
 
-        if (inside == true && Input.GetKey("s"))
+            // Play the sound if not already playing
+            if (!sound.isPlaying)
+            {
+                sound.loop = true;
+                sound.Play();
+            }
+        }
+        else if (inside && Input.GetKey("s"))
         {
             player.transform.position += Vector3.down / speed * Time.deltaTime;
-        }
 
-        if (inside == true && Input.GetKey("w"))
+            // Play the sound if not already playing
+            if (!sound.isPlaying)
+            {
+                sound.loop = true;
+                sound.Play();
+            }
+        }
+        else
         {
-            sound.enabled = true;
-            sound.loop = true;
-        } else
-        {
-            sound.enabled = false;
-            sound.loop = false;
+            // Stop the sound when not climbing
+            if (sound.isPlaying)
+            {
+                sound.loop = false;
+                sound.Stop();
+            }
         }
     }
 }

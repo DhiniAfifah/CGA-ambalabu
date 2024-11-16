@@ -97,6 +97,7 @@ public class OpenBoxWithLoot : MonoBehaviour
         {
             boxObj.GetComponent<BoxCollider>().enabled = false;
             boxObj.GetComponent<OpenBox>().enabled = false;
+            keyMissingText.SetActive(false);
         }
     }
 }
