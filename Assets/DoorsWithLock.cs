@@ -50,7 +50,6 @@ public class DoorsWithLock : MonoBehaviour
         {
             locked = false;
             hasKey = true;
-            Debug.Log("aaktif");
         } else
         {
             hasKey = false;
