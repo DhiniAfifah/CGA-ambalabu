@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -19,11 +20,14 @@ public class AI : MonoBehaviour
     public Vector3 rayCastOffset;
     public string deathScene;
 
+    public GameObject spotlight;
+
     void Start()
     {
         walking = true;
         randNum = Random.Range(0, destinations.Count);
         currentDest = destinations[randNum];
+        spotlight.gameObject.SetActive(false);
     }
     void Update()
     {
@@ -56,6 +60,7 @@ public class AI : MonoBehaviour
                 aiAnim.ResetTrigger("idle");
                 aiAnim.ResetTrigger("sprint");
                 aiAnim.SetTrigger("jumpscare");
+                spotlight.gameObject.SetActive(true);
                 StartCoroutine(deathRoutine());
                 chasing = false;
             }
