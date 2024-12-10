@@ -926,6 +926,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2360999547972567827, guid: febe2c1c4a6567f4c8fa10ef6d8f37b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4188852414137874770, guid: febe2c1c4a6567f4c8fa10ef6d8f37b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -982,6 +986,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1490633804}
+    - target: {fileID: 6661656189574523562, guid: febe2c1c4a6567f4c8fa10ef6d8f37b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8850042185835196639, guid: febe2c1c4a6567f4c8fa10ef6d8f37b3, type: 3}
       propertyPath: m_IsActive
       value: 1
