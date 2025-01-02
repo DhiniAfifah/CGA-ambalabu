@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
         loading.GetComponent<Canvas>().enabled = true;
         mainMenu.GetComponent<Canvas>().enabled = false;
         buttonSound.Play();
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("testing");
     }
 
     public void OptionBtn()
